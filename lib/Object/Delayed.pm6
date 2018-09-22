@@ -6,12 +6,17 @@ my %EXPORT;
 
 module Object::Delayed:ver<0.0.1>:auth<cpan:ELIZABETH> {
 
-    # don't care if the original name seeps through
-    %EXPORT<&slack> := &trampoline;
-
+    # run code asychronously
     %EXPORT<&catchup> := sub catchup(&code) {
         my $promise := Promise.start(&code);
         trampoline { $promise.result }
+    }
+
+    # set up the export hash
+    BEGIN {
+        # don't care if the original name seeps through
+        %EXPORT<&slack>   := &trampoline;
+        %EXPORT<&catchup> := &catchup;
     }
 }
 
