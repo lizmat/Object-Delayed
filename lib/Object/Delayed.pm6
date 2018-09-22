@@ -1,10 +1,10 @@
 use v6.c;
 
-use Object::Trampoline:ver<0.0.4>:auth<cpan:ELIZABETH>;
+use Object::Trampoline:ver<0.0.5>:auth<cpan:ELIZABETH>;
 
 my %EXPORT;
 
-module Object::Delayed:ver<0.0.2>:auth<cpan:ELIZABETH> {
+module Object::Delayed:ver<0.0.3>:auth<cpan:ELIZABETH> {
 
     # run code asychronously
     %EXPORT<&catchup> := sub catchup(&code) {
@@ -36,6 +36,13 @@ Object::Delayed - export subs for lazy object creation
     my $dbh = slack { DBIish.connect: ... }
     my $sth = slack { $dbh.prepare: 'select foo from bar' }
 
+    # lazy default values for attributes in objects
+    class Foo {
+        has $.bar = slack { say "delayed init"; "bar" }
+    }
+    my $foo = Foo.new;
+    say $foo.bar;  # delayed init; bar
+
     # execute asynchronously, produce value when done
     my $prime1000 = catchup { (^Inf).grep( *.is-prime ).skip(999).head }
     # do other stuff while prime is calculated
@@ -49,7 +56,8 @@ creation of the object.  But then your code may become much more complicated.
 
 The C<slack> subroutine allows you to transparently create an intermediate
 object that will perform the delayed creation of the original object when
-B<any> method is called on it.
+B<any> method is called on it.  This can also be used to serve as a lazy
+default value for a class attribute.
 
 To make it easier to check whether the actual object has been created, you
 can check for C<.defined> or booleaness of the object without actually

@@ -2,6 +2,9 @@ Revision history for Object-Delayed
 
 {{$NEXT}}
 
+0.0.3  2018-09-22T22:36:48+02:00
+    - Finally got slack to work with class attributes
+
 0.0.2  2018-09-22T20:50:47+02:00
     - Fixed race condition in catchup tests
 
