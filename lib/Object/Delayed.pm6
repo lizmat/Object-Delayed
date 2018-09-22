@@ -4,7 +4,7 @@ use Object::Trampoline:ver<0.0.4>:auth<cpan:ELIZABETH>;
 
 my %EXPORT;
 
-module Object::Delayed:ver<0.0.1>:auth<cpan:ELIZABETH> {
+module Object::Delayed:ver<0.0.2>:auth<cpan:ELIZABETH> {
 
     # run code asychronously
     %EXPORT<&catchup> := sub catchup(&code) {

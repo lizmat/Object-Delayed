@@ -2,7 +2,7 @@ use v6.c;
 use Test;
 use Object::Delayed;
 
-plan 17;
+plan 15;
 
 my @seen;
 
@@ -28,30 +28,31 @@ my $bar3 = catchup { sleep 1; $foo3.Bar }
 
 # simple catchup
 nok $foo1.WHAT =:= Foo, 'did we get something else than Foo';
-is +@seen, 0, 'no Foo object created yet';
 
 is $foo1.zip, 42, 'did we get the right bar';
 isa-ok $foo1, Foo, 'do we have a Foo object now';
-is @seen, "Foo", 'did we create an object now';
 
 # another simple catchup
 nok $foo2.WHAT =:= Foo, 'did we get something else than Foo again';
 is $foo2.zip, 666, 'did we get the right bar again';
 isa-ok $foo2, Foo, 'do we have a Foo object again';
-is @seen, "Foo Foo", 'did we create an object again';
 
 # stacked catchups
 nok $foo3.WHAT =:= Foo, 'did we get something else than Foo yet again';
 nok $bar3.WHAT =:= Bar, 'did we get else then Bar';
-is @seen, "Foo Foo", 'did we not create any real object again';
 
 is $bar3.zop, 314, 'did we get the right object and value';
 isa-ok $foo3, Foo, 'do we have a Foo object again';
 isa-ok $bar3, Bar, 'do we have a Bar object';
-is @seen, "Foo Foo Foo Bar", 'did we not create any real object again';
+
+# all values requested, so all async should be done
+is @seen.grep("Foo").elems, 3, "did we see 3 Foo's";
+is @seen.grep("Bar").elems, 1, "did we see 1 Bar";
 
 # sink context
 catchup { Foo.new }
-is @seen, "Foo Foo Foo Bar Foo", 'did we create a real object while sinking';
+
+is @seen.grep("Foo").elems, 4, "did we now see 4 Foo's";
+is @seen.grep("Bar").elems, 1, "did we still see 1 Bar";
 
 # vim: ft=perl6 expandtab sw=4
