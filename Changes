@@ -2,6 +2,9 @@ Revision history for Object-Delayed
 
 {{$NEXT}}
 
+0.0.4  2018-11-16T13:04:04+01:00
+    - Version bump to try to get Travis to go to green
+
 0.0.3  2018-09-22T22:36:48+02:00
     - Finally got slack to work with class attributes
 
