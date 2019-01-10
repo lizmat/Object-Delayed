@@ -1,10 +1,10 @@
 use v6.c;
 
-use Object::Trampoline:ver<0.0.5>:auth<cpan:ELIZABETH>;
+use Object::Trampoline:ver<0.0.5+>:auth<cpan:ELIZABETH>;
 
 my %EXPORT;
 
-module Object::Delayed:ver<0.0.5>:auth<cpan:ELIZABETH> {
+module Object::Delayed:ver<0.0.6>:auth<cpan:ELIZABETH> {
 
     # run code asychronously
     %EXPORT<&catchup> := sub catchup(&code) {
