@@ -5,7 +5,7 @@
   ],
   "build-depends" : [ ],
   "depends" : [
-    "Object::Trampoline"
+    "Object::Trampoline:ver<0.0.8+>:auth<cpan:ELIZABETH>"
   ],
   "description" : "export subs for lazy object creation",
   "license" : "Artistic-2.0",
@@ -20,5 +20,5 @@
     "UTILS"
   ],
   "test-depends" : [ ],
-  "version" : "0.0.6"
+  "version" : "0.0.7"
 }

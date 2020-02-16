@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/lizmat/Object-Delayed.svg?branch=master)](https://travis-ci.org/lizmat/Object-Delayed)
-
 NAME
 ====
 
