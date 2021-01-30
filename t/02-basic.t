@@ -55,4 +55,4 @@ catchup { Foo.new }
 is @seen.grep("Foo").elems, 4, "did we now see 4 Foo's";
 is @seen.grep("Bar").elems, 1, "did we still see 1 Bar";
 
-# vim: ft=perl6 expandtab sw=4
+# vim: expandtab shiftwidth=4

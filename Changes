@@ -2,6 +2,10 @@ Revision history for Object-Delayed
 
 {{$NEXT}}
 
+0.0.9  2021-01-30T14:20:41+01:00
+    - Fixed dependency on Object::Trampoline to 0.0.9
+    - Update copyright year
+
 0.0.8  2020-02-16T14:29:10+01:00
     - Oops, forgot to rebase changes from Github
 

@@ -1,10 +1,10 @@
 use v6.c;
 
-use Object::Trampoline:ver<0.0.8+>:auth<cpan:ELIZABETH>;
+use Object::Trampoline:ver<0.0.9>:auth<cpan:ELIZABETH>;
 
 my %EXPORT;
 
-module Object::Delayed:ver<0.0.8>:auth<cpan:ELIZABETH> {
+module Object::Delayed:ver<0.0.9>:auth<cpan:ELIZABETH> {
 
     # run code asychronously
     %EXPORT<&catchup> := sub catchup(&code) {
@@ -99,11 +99,11 @@ Comments and Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018, 2020 Elizabeth Mattijsen
+Copyright 2018,2020,2021 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under
 the Artistic License 2.0.
 
 =end pod
 
-# vim: ft=perl6 expandtab sw=4
+# vim: expandtab shiftwidth=4

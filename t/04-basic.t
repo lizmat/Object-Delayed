@@ -29,4 +29,4 @@ is +@seen, 0, 'no attribute access yet';
 is $object.zip, "bar", "does the attribute give the right value";
 is +@seen, 0, 'still no attribute access yet';
 
-# vim: ft=perl6 expandtab sw=4
+# vim: expandtab shiftwidth=4

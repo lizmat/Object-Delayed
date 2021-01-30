@@ -50,4 +50,4 @@ is @seen, "Foo Foo Foo Bar", 'did we not create any real object again';
 slack { Foo.new }
 is @seen, "Foo Foo Foo Bar Foo", 'did we create a real object while sinking';
 
-# vim: ft=perl6 expandtab sw=4
+# vim: expandtab shiftwidth=4

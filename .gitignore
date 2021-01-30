@@ -7,3 +7,5 @@
 .precomp/
 /releases/
 /Object-Delayed-*
+/lib/Object/Trampoline.pm6
+/lib/InterceptAllMethods.pm6
