@@ -4,7 +4,7 @@ use Object::Trampoline:ver<0.0.9>:auth<cpan:ELIZABETH>;
 
 my %EXPORT;
 
-module Object::Delayed:ver<0.0.9>:auth<cpan:ELIZABETH> {
+module Object::Delayed:ver<0.0.10>:auth<cpan:ELIZABETH> {
 
     # run code asychronously
     %EXPORT<&catchup> := sub catchup(&code) {
@@ -35,6 +35,9 @@ Object::Delayed - export subs for lazy object creation
     # execute when value needed
     my $dbh = slack { DBIish.connect: ... }
     my $sth = slack { $dbh.prepare: 'select foo from bar' }
+
+    # action if value was actually created
+    LEAVE .disconnect with $dbh;
 
     # lazy default values for attributes in objects
     class Foo {
@@ -71,11 +74,13 @@ B<any> method is called on it.  This can also be used to serve as a lazy
 default value for a class attribute.
 
 To make it easier to check whether the actual object has been created, you
-can check for C<.defined> or booleaness of the object without actually
+can check for definedness or truthinesss of the object without actually
 creating the object.  This can e.g. be used when wanting to disconnect a
 database handle upon exiting a scope, but only if an actual connection has
 been made (to prevent it from making the connection only to be able to
-disconnect it).
+disconnect it), e.g. by using a C<LEAVE> phaser:
+
+    LEAVE .disconnect with $dbh;
 
 =head2 catchup
 
