@@ -1,10 +1,10 @@
 use v6.c;
 
-use Object::Trampoline:ver<0.0.9>:auth<cpan:ELIZABETH>;
+use Object::Trampoline:ver<0.0.10>:auth<zef:lizmat>;
 
 my %EXPORT;
 
-module Object::Delayed:ver<0.0.10>:auth<cpan:ELIZABETH> {
+module Object::Delayed:ver<0.0.11>:auth<zef:lizmat> {
 
     # run code asychronously
     %EXPORT<&catchup> := sub catchup(&code) {
@@ -97,14 +97,14 @@ ready, then it will just give the value immediately.
 
 =head1 AUTHOR
 
-Elizabeth Mattijsen <liz@wenzperl.nl>
+Elizabeth Mattijsen <liz@raku.rocks>
 
 Source can be located at: https://github.com/lizmat/Object::Delayed .
 Comments and Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018,2020,2021 Elizabeth Mattijsen
+Copyright 2018, 2020, 2021 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under
 the Artistic License 2.0.

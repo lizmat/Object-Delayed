@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/lizmat/Object-Delayed/workflows/test/badge.svg)](https://github.com/lizmat/Object-Delayed/actions)
+
 NAME
 ====
 
@@ -63,14 +65,14 @@ The `catchup` subroutine allows you to transparently run code **asynchronously**
 AUTHOR
 ======
 
-Elizabeth Mattijsen <liz@wenzperl.nl>
+Elizabeth Mattijsen <liz@raku.rocks>
 
 Source can be located at: https://github.com/lizmat/Object::Delayed . Comments and Pull Requests are welcome.
 
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2018,2020,2021 Elizabeth Mattijsen
+Copyright 2018, 2020, 2021 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
