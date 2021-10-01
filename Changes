@@ -2,6 +2,9 @@ Revision history for Object-Delayed
 
 {{$NEXT}}
 
+0.0.12  2021-10-01T10:55:33+02:00
+    - Update dependency on Object::Trampoline
+
 0.0.11  2021-09-09T23:53:39+02:00
     - Change file extension to .rakumod
     - Migrate to zef ecosystem

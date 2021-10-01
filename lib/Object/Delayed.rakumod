@@ -1,10 +1,10 @@
 use v6.c;
 
-use Object::Trampoline:ver<0.0.10>:auth<zef:lizmat>;
+use Object::Trampoline:ver<0.0.11>:auth<zef:lizmat>;
 
 my %EXPORT;
 
-module Object::Delayed:ver<0.0.11>:auth<zef:lizmat> {
+module Object::Delayed:ver<0.0.12>:auth<zef:lizmat> {
 
     # run code asychronously
     %EXPORT<&catchup> := sub catchup(&code) {
