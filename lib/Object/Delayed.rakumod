@@ -1,10 +1,10 @@
 use v6.c;
 
-use Object::Trampoline:ver<0.0.11>:auth<zef:lizmat>;
+use Object::Trampoline:ver<0.0.12>:auth<zef:lizmat>;
 
 my %EXPORT;
 
-module Object::Delayed:ver<0.0.12>:auth<zef:lizmat> {
+module Object::Delayed {
 
     # run code asychronously
     %EXPORT<&catchup> := sub catchup(&code) {
@@ -30,26 +30,30 @@ Object::Delayed - export subs for lazy object creation
 
 =head1 SYNOPSIS
 
-    use Object::Delayed;  # imports "slack" and "catchup"
+=begin code :lang<raku>
 
-    # execute when value needed
-    my $dbh = slack { DBIish.connect: ... }
-    my $sth = slack { $dbh.prepare: 'select foo from bar' }
+use Object::Delayed;  # imports "slack" and "catchup"
 
-    # action if value was actually created
-    LEAVE .disconnect with $dbh;
+# execute when value needed
+my $dbh = slack { DBIish.connect: ... }
+my $sth = slack { $dbh.prepare: 'select foo from bar' }
 
-    # lazy default values for attributes in objects
-    class Foo {
-        has $.bar = slack { say "delayed init"; "bar" }
-    }
-    my $foo = Foo.new;
-    say $foo.bar;  # delayed init; bar
+# action if value was actually created
+LEAVE .disconnect with $dbh;
 
-    # execute asynchronously, produce value when done
-    my $prime1000 = catchup { (^Inf).grep( *.is-prime ).skip(999).head }
-    # do other stuff while prime is calculated
-    say $prime1000;  # 7919
+# lazy default values for attributes in objects
+class Foo {
+    has $.bar = slack { say "delayed init"; "bar" }
+}
+my $foo = Foo.new;
+say $foo.bar;  # delayed init; bar
+
+# execute asynchronously, produce value when done
+my $prime1000 = catchup { (^Inf).grep( *.is-prime ).skip(999).head }
+# do other stuff while prime is calculated
+say $prime1000;  # 7919
+
+=end code
 
 =head1 DESCRIPTION
 
@@ -60,9 +64,13 @@ when they are needed.
 
 =head2 slack
 
-    # execute when value needed
-    my $dbh = slack { DBIish.connect: ... }
-    my $sth = slack { $dbh.prepare: 'select foo from bar' }
+=begin code :lang<raku>
+
+# execute when value needed
+my $dbh = slack { DBIish.connect: ... }
+my $sth = slack { $dbh.prepare: 'select foo from bar' }
+
+=end code
 
 There are times when constructing an object is expensive but you are not sure
 yet you are going to need it.  In that case it can be handy to delay the
@@ -80,14 +88,22 @@ database handle upon exiting a scope, but only if an actual connection has
 been made (to prevent it from making the connection only to be able to
 disconnect it), e.g. by using a C<LEAVE> phaser:
 
-    LEAVE .disconnect with $dbh;
+=begin code :lang<raku>
+
+LEAVE .disconnect with $dbh;
+
+=end code
 
 =head2 catchup
 
-    # execute asynchronously, produce value when done
-    my $prime1000 = catchup { (^Inf).grep( *.is-prime ).skip(999).head }
-    # do other stuff while prime is calculated
-    say $prime1000;  # 7919
+=begin code :lang<raku>
+
+# execute asynchronously, produce value when done
+my $prime1000 = catchup { (^Inf).grep( *.is-prime ).skip(999).head }
+# do other stuff while prime is calculated
+say $prime1000;  # 7919
+
+=end code
 
 The C<catchup> subroutine allows you to transparently run code
 B<asynchronously> that creates a result value.  If the value is used in
@@ -102,9 +118,13 @@ Elizabeth Mattijsen <liz@raku.rocks>
 Source can be located at: https://github.com/lizmat/Object::Delayed .
 Comments and Pull Requests are welcome.
 
+If you like this module, or what I’m doing more generally, committing to a
+L<small sponsorship|https://github.com/sponsors/lizmat/>  would mean a great
+deal to me!
+
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018, 2020, 2021 Elizabeth Mattijsen
+Copyright 2018, 2020, 2021, 2023 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under
 the Artistic License 2.0.

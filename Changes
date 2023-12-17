@@ -2,6 +2,12 @@ Revision history for Object-Delayed
 
 {{$NEXT}}
 
+0.0.13  2023-12-17T17:15:40+01:00
+    - Up dependency on Object::Trampoline for 2023.12 support
+    - Update copyright year
+    - Add sponsor link
+    - Change extension of test-files to .rakutest
+
 0.0.12  2021-10-01T10:55:33+02:00
     - Update dependency on Object::Trampoline
 
