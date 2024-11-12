@@ -1,5 +1,3 @@
-use v6.c;
-
 use Object::Trampoline:ver<0.0.12>:auth<zef:lizmat>;
 
 my %EXPORT;
